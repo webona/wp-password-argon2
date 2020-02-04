@@ -1,0 +1,32 @@
+{
+  "name": "webona/wp-password-argon",
+  "license": "MIT",
+  "description": "WordPress plugin replacing password functions using Argon2",
+  "homepage": "https://webona.agency",
+  "authors": [
+    {
+      "name": "Tomas Kavalek",
+      "email": "kavalek@webona.cz",
+    }
+  ],
+  "keywords": [
+    "wordpress wp plugin password argon argon2"
+  ],
+  "support": {
+    "issues": "https://github.com/webona/wp-password-argon/issues"
+  },
+  "require": {
+    "php": ">=7.2.0",
+    "composer/installers": "~1.0"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "files": ["wp-password-argon.php"]
+  },
+  "archive" : {
+    "exclude": [
+      ".gitignore",
+    ]
+  }
+}
