@@ -19,7 +19,10 @@ const PASSWORD_ALGO = PASSWORD_ARGON2I; // PASSWORD_ARGON2ID
  */
 function wp_check_password($password, $hash, $userId = '')
 {
-	$check = password_verify($password, $hash);
+	require_once ABSPATH . WPINC . '/class-phpass.php';
+	$wp_hasher = new PasswordHash(8, true);
+
+	$check = $wp_hasher->CheckPassword($password, $hash);
 
 	if ( ! $check) {
 		return apply_filters('check_password', $check, $password, $hash, $userId);
