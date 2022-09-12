@@ -22,7 +22,13 @@ function wp_check_password($password, $hash, $userId = '')
 	require_once ABSPATH . WPINC . '/class-phpass.php';
 	$wp_hasher = new PasswordHash(8, true);
 
+	// Check against standard WP hash
 	$check = $wp_hasher->CheckPassword($password, $hash);
+
+	// If WP hash failed, try check using password verify
+	if ( ! $check) {
+		$check = password_verify($password, $hash);
+	}
 
 	if ( ! $check) {
 		return apply_filters('check_password', $check, $password, $hash, $userId);
